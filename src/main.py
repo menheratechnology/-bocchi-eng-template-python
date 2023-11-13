@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
+from controllers import todo_controller
 
 app = FastAPI()
 
@@ -19,7 +20,13 @@ async def getHealth():
     return JSONResponse(content={
         'status': 200,
         'message': 'Success',
-        'data': {
-            'health': 'status ok'
-        }
+        'data': 'status ok'
     })
+
+
+app.include_router(
+    todo_controller.router,
+    prefix="/todos",
+    tags=["todos"],
+    responses={404: {"description": "Not found"}},
+)
