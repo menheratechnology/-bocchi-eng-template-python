@@ -1,18 +1,15 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from todo import Todo, CreateTodoRequest
+from todo import CreateTodoRequest
+from repositories import todo_repository
 
 router = APIRouter()
-
-todos = [
-    Todo('todo1', False),
-    Todo('todo2', True)
-]
 
 
 @router.get('/')
 def find_all():
+    todos = todo_repository.fetch_all()
     return JSONResponse(content={
         'status': 200,
         'message': 'Success got all todos',
@@ -24,12 +21,7 @@ def find_all():
 
 @router.post('/')
 def create(req: CreateTodoRequest):
-    new_todo = Todo(
-        name=req.name,
-        is_done=req.is_done
-    )
-    todos.append(new_todo)
-
+    todos = todo_repository.create(req.name, req.is_done)
     return JSONResponse(content={
         'status': 200,
         'message': 'Success create todo',
