@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from todo import CreateTodoRequest
+# ↓このモジュールを呼び出してください
 from repositories import todo_repository
 
 router = APIRouter()
@@ -9,7 +10,8 @@ router = APIRouter()
 
 @router.get('/')
 def find_all():
-    todos = todo_repository.fetch_all()
+    # TODO: ここでtodo_repositoryのfetch_allを呼び出す
+    todos = [] # TODO: todo_repositoryのfetch_allメソッドから受け取ったtodosを代入する
     return JSONResponse(content={
         'status': 200,
         'message': 'Success got all todos',
@@ -21,7 +23,8 @@ def find_all():
 
 @router.post('/')
 def create(req: CreateTodoRequest):
-    todos = todo_repository.create(req.name, req.is_done)
+    # TODO: ここでtodo_repositoryのcreateを呼び出す
+    todos = [] # TODO: todo_repositoryのcreateメソッドから受け取った新しいtodosを代入する
     return JSONResponse(content={
         'status': 200,
         'message': 'Success create todo',
