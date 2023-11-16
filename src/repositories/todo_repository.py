@@ -9,9 +9,15 @@ todos = [
 
 def fetch_all():
     # TODO: ここでtodosを返す
-    return []
+    return todos
 
 
 def create(name: Todo.name, is_done: Todo.is_done):
     # TODO: ここでtodos配列に新しいTodoアイテムを追加し、todosを返す
+    new_todo = Todo(
+        name=name,
+        is_done=is_done
+    )
+    todos.append(new_todo)
+
     return []
