@@ -25,7 +25,8 @@ def find_all():
 @router.post('/')
 def create(req: CreateTodoRequest):
     # TODO: ここでtodo_repositoryのcreateを呼び出す
-    todos = [] # TODO: todo_repositoryのcreateメソッドから受け取った新しいtodosを代入する
+    # TODO: todo_repositoryのcreateメソッドから受け取った新しいtodosを代入する
+    todos = todo_repository.create(req.name, req.is_done)
     return JSONResponse(content={
         'status': 200,
         'message': 'Success create todo',
