@@ -15,6 +15,17 @@ async def hello():
     })
 
 
+@app.get('/ocha')
+async def ocha():
+    return JSONResponse(content={
+        'status': 200,
+        'message': 'Success',
+        'data': {
+            'message': 'Hello!'
+        }
+    })
+
+
 @app.get('/health')
 async def getHealth():
     return JSONResponse(content={
