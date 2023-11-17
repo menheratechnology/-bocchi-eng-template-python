@@ -20,4 +20,4 @@ def create(name: Todo.name, is_done: Todo.is_done):
     )
     todos.append(new_todo)
 
-    return []
+    return todos
