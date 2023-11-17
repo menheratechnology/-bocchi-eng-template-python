@@ -19,9 +19,9 @@ async def hello():
 async def ocha():
     return JSONResponse(content={
         'status': 200,
-        'message': 'Success',
+        'message': 'Succeaaaaass',
         'data': {
-            'message': 'Hello!'
+            'message': 'Helloaaaa!'
         }
     })
 
